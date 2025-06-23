@@ -1,4 +1,3 @@
-
 # Full-Stack Item Management System
 
 A complete CRUD (Create, Read, Update, Delete) application for managing items, built with React, TypeScript, Tailwind CSS, and Supabase.
@@ -21,6 +20,13 @@ This project demonstrates a modern full-stack web application with:
 - **State Management**: React hooks with Tanstack Query
 - **Routing**: React Router DOM
 - **Icons**: Lucide React
+- **Testing Frameworks & Libraries**:
+  - **Jest**: Main test runner for unit, integration, and end-to-end tests
+  - **ts-jest**: TypeScript preprocessor for Jest
+  - **@testing-library/react**: For React component testing
+  - **@testing-library/jest-dom**: Custom DOM matchers for Jest
+  - **@testing-library/user-event**: Simulates user interactions
+  - **Supabase JS Client**: Used for integration and API e2e tests
 
 ## 📦 Project Structure
 
@@ -178,23 +184,73 @@ curl -X DELETE "https://ldtelowagnfxcphzssuq.supabase.co/rest/v1/items?id=eq.ITE
   -H "apikey: YOUR_API_KEY"
 ```
 
-## 🧪 Testing the Application
+## 🧪 Testing
 
-1. **Access the Application**
-   - Open `http://localhost:5173` in your browser
-   - Navigate to the "Get Started" button or directly to `/items`
+### 1. Manual API Testing (with cURL)
+- All API endpoints were tested manually using cURL commands in PowerShell.
+- See [CURL_TESTING.md](./CURL_TESTING.md) for step-by-step instructions, example commands, and expected responses for all CRUD operations and error scenarios.
+- Example:
+  ```powershell
+  curl.exe -X GET "https://ldtelowagnfxcphzssuq.supabase.co/rest/v1/items" -H "apikey: <YOUR_API_KEY>"
+  ```
 
-2. **Test CRUD Operations**
-   - Click "Add Item" to create a new item
-   - Fill in the name (required) and description (optional)
-   - View the item in the table
-   - Click "Edit" to modify the item
-   - Click "Delete" to remove the item (with confirmation)
+### 2. Automated Unit Tests
+- Utility functions (e.g., `cn` for class name merging) are tested in `src/__tests__/utils.test.ts`.
+- Run with:
+  ```bash
+  npm test
+  ```
+- To check coverage:
+  ```bash
+  npm run test:coverage
+  ```
+- **100% code coverage achieved.**
 
-3. **Test Error Handling**
-   - Try submitting a form without a name
-   - Test with very long names or descriptions
-   - Check network tab for API calls
+#### Example Output
+
+![Unit test passing and coverage](public/screenshots/unit-testing.png)
+
+### 3. Automated Integration Tests
+- Integration tests for Supabase CRUD operations and error handling are in `src/__tests__/supabase.integration.test.ts`.
+- Run with:
+  ```bash
+  npm test
+  ```
+- To check coverage:
+  ```bash
+  npm run test:coverage
+  ```
+- **100% code coverage achieved.**
+
+![Automated Integration test passing and coverage](public/screenshots/Integration-testing.png)
+
+### 4. Automated API End-to-End Tests
+- End-to-end API tests using the Supabase client are in `src/__tests__/api.e2e.test.ts`.
+- Run with:
+  ```bash
+  npm test
+  ```
+- To check coverage:
+  ```bash
+  npm run test:coverage
+  ```
+- **100% code coverage achieved.**
+
+![Automated Integration test passing and coverage](public/screenshots/end-to-end-testing.png)
+
+### 5. Test Coverage
+- To check test coverage:
+  ```bash
+  npm run test:coverage
+  ```
+- 100% coverage is achieved for all tested files.
+
+### 6. Troubleshooting & Configuration
+- Node.js and npm must be installed and available in your PATH.
+- Jest is configured for TypeScript and React Testing Library in `jest.config.cjs`.
+- TypeScript config (`tsconfig.json`) includes `esModuleInterop` for compatibility.
+- If you encounter issues with ESM/CJS or fetch, use the Supabase client directly in tests (as done here).
+- For PowerShell, use `curl.exe` instead of `curl` for API testing.
 
 ## 🔧 Configuration
 
@@ -281,3 +337,12 @@ Potential improvements to consider:
 - Export/import capabilities
 - Audit trail and versioning
 - Advanced validation rules
+
+## 📋 Assignment Requirements
+
+This project was built as a full-stack CRUD assignment with the following requirements:
+- Implement a complete CRUD (Create, Read, Update, Delete) system for managing items.
+- Use React (with TypeScript) and Tailwind CSS for the frontend.
+- Use Supabase (PostgreSQL) for the backend, leveraging its auto-generated REST API.
+- Provide both manual and automated ways to test the API and application.
+- Ensure robust error handling, validation, and user feedback.
