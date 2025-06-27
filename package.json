@@ -10,7 +10,10 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "keploy:install": "curl -s https://raw.githubusercontent.com/keploy/keploy/main/install.sh | bash",
+    "keploy:test": "keploy test --config keploy.yaml",
+    "api:test": "npm run keploy:test"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
