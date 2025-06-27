@@ -1,0 +1,122 @@
+openapi: 3.0.3
+info:
+  title: Item Management API
+  description: Simple API for managing items with CRUD operations
+  version: 1.0.0
+
+servers:
+  - url: https://ldtelowagnfxcphzssuq.supabase.co/rest/v1
+    description: Production server
+
+security:
+  - ApiKeyAuth: []
+
+paths:
+  /items:
+    get:
+      summary: Get all items
+      description: Retrieve all items from the database
+      responses:
+        '200':
+          description: List of items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+    
+    post:
+      summary: Create a new item
+      description: Add a new item to the database
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateItemRequest'
+      responses:
+        '201':
+          description: Item created successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+
+  /items/{itemId}:
+    parameters:
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    
+    patch:
+      summary: Update an item
+      description: Update an existing item by ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateItemRequest'
+      responses:
+        '200':
+          description: Item updated successfully
+    
+    delete:
+      summary: Delete an item
+      description: Remove an item from the database
+      responses:
+        '204':
+          description: Item deleted successfully
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+      description: Supabase API key
+
+  schemas:
+    Item:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    CreateItemRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+
+    UpdateItemRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true 

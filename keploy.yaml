@@ -1,0 +1,55 @@
+# Keploy Configuration for Item Management API
+app:
+  name: item-management-api
+  port: 3000
+
+# API configuration
+api:
+  base_url: "https://ldtelowagnfxcphzssuq.supabase.co/rest/v1"
+  headers:
+    apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxkdGVsb3dhZ25meGNwaHpzc3VxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQwMTE0OTcsImV4cCI6MjA1OTU4NzQ5N30.hqzVr9AFNmc59h3GfDKzmblpNUN-dGErHHUb0ucMkl0"
+    Content-Type: "application/json"
+
+# Test cases
+test_cases:
+  - name: "Get All Items"
+    method: "GET"
+    path: "/items"
+    expected_status: 200
+
+  - name: "Create Item"
+    method: "POST"
+    path: "/items"
+    body:
+      name: "Test Item"
+      description: "Created by Keploy"
+    expected_status: 201
+
+  - name: "Create Item Without Description"
+    method: "POST"
+    path: "/items"
+    body:
+      name: "Test Item No Description"
+    expected_status: 201
+
+# Error test cases
+error_test_cases:
+  - name: "Invalid API Key"
+    method: "GET"
+    path: "/items"
+    headers:
+      apikey: "invalid_key"
+    expected_status: 401
+
+# Test execution
+execution:
+  mode: "record"
+  timeout: 30000
+  retry:
+    max_attempts: 3
+    delay: 1000
+
+# Reporting
+reporting:
+  format: ["json", "html"]
+  output_dir: "./keploy-reports" 
