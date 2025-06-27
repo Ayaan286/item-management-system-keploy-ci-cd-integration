@@ -1,50 +1,32 @@
-# Item Management API - Full Stack CRUD Application
+# Item Management System with Keploy CI/CD Integration
 
-A modern, responsive item management system built with React, TypeScript, Tailwind CSS, and Supabase.
+A modern full-stack item management application built with React, TypeScript, Tailwind CSS, and Supabase, featuring AI-powered API testing with Keploy and automated CI/CD pipeline.
 
-## 🏗️ Tech Stack
+## 🚀 Features
+
+- **Modern UI**: Built with React 18, TypeScript, and Tailwind CSS
+- **Real-time Database**: Powered by Supabase with PostgreSQL
+- **AI-Powered Testing**: Automated API testing with Keploy
+- **CI/CD Pipeline**: GitHub Actions for automated testing and deployment
+- **Responsive Design**: Works on desktop, tablet, and mobile
+- **Type Safety**: Full TypeScript implementation
+- **Modern Tooling**: Vite, ESLint, Jest, and more
+
+## 🛠️ Tech Stack
 
 - **Frontend**: React 18, TypeScript, Tailwind CSS, Shadcn/ui
-- **Backend**: Supabase (PostgreSQL + REST API)
-- **Testing**: Jest, React Testing Library, Keploy API Testing
+- **Backend**: Supabase (PostgreSQL, Auth, Real-time)
+- **Testing**: Jest, Keploy (AI-powered API testing)
 - **CI/CD**: GitHub Actions
 - **Build Tool**: Vite
 - **Package Manager**: npm
 
-## 🚀 Features
-
-### Core CRUD Operations
-- ✅ **Create Items**: Add new items with name and description
-- ✅ **Read Items**: View all items with real-time updates
-- ✅ **Update Items**: Edit items inline with form validation
-- ✅ **Delete Items**: Remove items with confirmation dialogs
-
-### Advanced Features
-- 🔄 **Real-time Updates**: Data synchronizes across all clients
-- 📱 **Responsive Design**: Works on desktop, tablet, and mobile
-- 🎨 **Modern UI**: Beautiful interface with Shadcn/ui components
-- ⚡ **Fast Performance**: Optimized with Vite and React 18
-- 🛡️ **Error Handling**: Comprehensive error messages and validation
-- 🔔 **Toast Notifications**: User-friendly feedback system
-
-### API Testing
-- 🧪 **Unit Tests**: Jest with React Testing Library
-- 🔗 **Integration Tests**: Supabase client testing
-- 🌐 **AI-Powered API Testing**: Keploy automated testing
-- 📊 **CI/CD Integration**: Automated testing pipeline
-
-## 📋 Prerequisites
-
-- Node.js (v18 or higher)
-- npm or yarn
-- Supabase account (free tier available)
-
-## 🛠️ Installation
+## 📦 Installation
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd item-verse-api-main
+   git clone https://github.com/Ayaan286/item-management-system-keploy-ci-cd-integration.git
+   cd item-management-system-keploy-ci-cd-integration
    ```
 
 2. **Install dependencies**
@@ -52,9 +34,8 @@ A modern, responsive item management system built with React, TypeScript, Tailwi
    npm install
    ```
 
-3. **Configure Supabase**
-   
-   The project is pre-configured with a Supabase project:
+3. **Database Setup**
+   The project uses a pre-configured Supabase instance:
    - **Project URL**: `https://ldtelowagnfxcphzssuq.supabase.co`
    - **API Key**: Included in the client configuration
    - **Database**: PostgreSQL with `items` table pre-configured
@@ -146,6 +127,19 @@ The pipeline runs automatically on:
 - Pull requests
 - Manual triggers
 
+## 🚀 CI/CD Pipeline with Keploy
+
+Our project includes a comprehensive CI/CD pipeline with AI-powered API testing using Keploy.
+
+### Successful Workflow Run
+![Successful Workflow](./public/screenshots/Successfull-Workflow.png)
+
+### Test Artifacts Generated
+![Artifacts Section](./public/screenshots/Artifacts-Section.png)
+
+### API Test Results
+![Keploy Test Report](./public/screenshots/keploy-html-report.png)
+
 ## 📊 Database Schema
 
 The `items` table structure:
@@ -202,27 +196,6 @@ The application is fully responsive and works on:
 - No sensitive data exposed in the frontend
 - Prepared for Row Level Security (RLS) if authentication is added
 
-## 🚀 Deployment
-
-### Deploy with Lovable
-
-This project is built with Lovable and can be deployed instantly:
-1. Click the "Publish" button in Lovable
-2. Your app will be live at a Lovable URL
-3. Optionally configure a custom domain
-
-### Deploy Elsewhere
-
-The project builds to static files and can be deployed to:
-- Vercel
-- Netlify
-- AWS S3 + CloudFront
-- GitHub Pages
-- Any static hosting service
-
-Build command: `npm run build`
-Output directory: `dist`
-
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -249,4 +222,3 @@ For detailed API testing instructions, see [CURL_TESTING.md](./CURL_TESTING.md).
 
 ---
 
-**Built with ❤️ using modern web technologies**
